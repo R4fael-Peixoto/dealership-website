@@ -8,193 +8,408 @@
     <link rel="icon" type="image/png" href="imagens/logo.png">
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header>
+    <!-- HEADER SEMÂNTICO -->
+    <header class="main-header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">Carchoise</div>
-                <nav>
+                <div class="logo">
+                    <h1>Carchoise</h1>
+                    <p class="tagline">O seu stand automóvel de confiança</p>
+                </div>
+                
+                <!-- NAVEGAÇÃO PRINCIPAL -->
+                <nav class="main-nav">
                     <ul>
-                        <li><a href="index.html" style="color: #ffcc00;">Início</a></li>
+                        <li><a href="index.html" class="active">Início</a></li>
                         <li><a href="catalogo.html">Catálogo</a></li>
-                        <li><a href="#">Serviços</a></li>
-                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="contactos.html">Contactos</a></li>
                     </ul>
                 </nav>
-                <div class="user-actions">
-                    <a href="contactos.html">Contacte-nos</a>
-                </div>
             </div>
         </div>
     </header>
 
-    <!-- Banner principal -->
-    <section class="hero">
-        <div class="container">
-            <h1>O seu stand automóvel de confiança</h1>
-            <p>Encontre o seu novo carro ou mota ao melhor preço com a Carchoise</p>
-            
-            <form class="search-form" id="search-form">
-                <div class="search-grid">
-                    <div class="search-field">
-                        <label for="marca">Marca</label>
-                        <select id="marca">
-                            <option value="">Qualquer marca</option>
-                            <option value="audi">Audi</option>
-                            <option value="bmw">BMW</option>
-                            <option value="ford">Ford</option>
-                            <option value="mercedes">Mercedes-Benz</option>
-                            <option value="renault">Renault</option>
-                            <option value="toyota">Toyota</option>
-                            <option value="volkswagen">Volkswagen</option>
-                            <option value="yamaha">Yamaha</option>
-                        </select>
-                    </div>
-                    
-                    <div class="search-field">
-                        <label for="combustivel">Combustível</label>
-                        <select id="combustivel">
-                            <option value="">Qualquer combustível</option>
-                            <option value="gasolina">Gasolina</option>
-                            <option value="diesel">Diesel</option>
-                            <option value="eletrico">Elétrico</option>
-                            <option value="hibrido">Híbrido</option>
-                        </select>
-                    </div>
-                    
-                    <div class="search-field">
-                        <label for="preco">Preço (até)</label>
-                        <select id="preco">
-                            <option value="">Sem limite</option>
-                            <option value="5000">5.000 €</option>
-                            <option value="10000">10.000 €</option>
-                            <option value="15000">15.000 €</option>
-                            <option value="20000">20.000 €</option>
-                            <option value="25000">25.000 €</option>
-                            <option value="30000">30.000 €</option>
-                        </select>
-                    </div>
-                    
-                    <div class="search-field">
-                        <label for="ano">Ano (desde)</label>
-                        <select id="ano">
-                            <option value="">Qualquer ano</option>
-                            <option value="2020">2020</option>
-                            <option value="2018">2018</option>
-                            <option value="2016">2016</option>
-                            <option value="2014">2014</option>
-                            <option value="2012">2012</option>
-                            <option value="2010">2010</option>
-                        </select>
-                    </div>
-                    
-                    <div class="search-field">
-                        <label for="quilometros">Quilómetros (até)</label>
-                        <select id="quilometros">
-                            <option value="">Sem limite</option>
-                            <option value="50000">50.000 km</option>
-                            <option value="100000">100.000 km</option>
-                            <option value="150000">150.000 km</option>
-                            <option value="200000">200.000 km</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="search-actions">
-                    <a href="#" class="advanced-search" id="reset-filters">Limpar filtros</a>
-                    <button type="submit" class="search-btn">Pesquisar</button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- Anúncios em destaque -->
-    <section class="listings">
-        <div class="container">
-            <h2 class="section-title">Veículos em Destaque</h2>
-            <div id="listings-container" class="listings-grid">
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        <!-- BANNER HERO -->
+        <section class="hero">
+            <div class="container">
+                <h2>Encontre o Veículo Perfeito</h2>
+                <p>Descubra a nossa seleção de carros e motas com a melhor qualidade e preço do mercado</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Modal de detalhes do anúncio -->
-    <div id="listing-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
-        <button class="close-modal" aria-label="Fechar modal">&times;</button>
+        <!-- SECÇÃO DE ANÚNCIOS EM DESTAQUE -->
+        <section class="featured-listings">
+            <div class="container">
+                <h2 class="section-title">Veículos em Destaque</h2>
+                <div class="listings-grid">
+                    <!-- Anúncio 1 -->
+                    <article class="listing-card">
+                        <div class="listing-image" style="background-image: url('imagens/bmw.png')"></div>
+                        <div class="listing-details">
+                            <h3 class="listing-title">BMW 320d</h3>
+                            <div class="listing-price">28.500 €</div>
+                            <div class="listing-info">
+                                <span>2019</span>
+                                <span>85.000 km</span>
+                                <span>Diesel</span>
+                            </div>
+                            <p class="listing-description">BMW 320d Luxury em excelente estado</p>
+                            <a href="#bmw-details" class="view-listing">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <!-- Anúncio 2 -->
+                    <article class="listing-card">
+                        <div class="listing-image" style="background-image: url('imagens/audi.png')"></div>
+                        <div class="listing-details">
+                            <h3 class="listing-title">Audi A4 Avant</h3>
+                            <div class="listing-price">32.900 €</div>
+                            <div class="listing-info">
+                                <span>2020</span>
+                                <span>45.000 km</span>
+                                <span>Diesel</span>
+                            </div>
+                            <p class="listing-description">Audi A4 Avant 2.0 TDI S tronic sport</p>
+                            <a href="#audi-details" class="view-listing">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <!-- Anúncio 3 -->
+                    <article class="listing-card">
+                        <div class="listing-image" style="background-image: url('imagens/mercedes.png')"></div>
+                        <div class="listing-details">
+                            <h3 class="listing-title">Mercedes-Benz C300h</h3>
+                            <div class="listing-price">35.750 €</div>
+                            <div class="listing-info">
+                                <span>2021</span>
+                                <span>30.000 km</span>
+                                <span>Híbrido</span>
+                            </div>
+                            <p class="listing-description">Mercedes-Benz C300h AMG Line</p>
+                            <a href="#mercedes-details" class="view-listing">Ver detalhes</a>
+                        </div>
+                    </article>
+
+                    <!-- Anúncio 4 -->
+                    <article class="listing-card">
+                        <div class="listing-image" style="background-image: url('imagens/yamaha.png')"></div>
+                        <div class="listing-details">
+                            <h3 class="listing-title">Yamaha MT-07</h3>
+                            <div class="listing-price">6.990 €</div>
+                            <div class="listing-info">
+                                <span>2018</span>
+                                <span>12.000 km</span>
+                                <span>Gasolina</span>
+                            </div>
+                            <p class="listing-description">Yamaha MT-07 em perfeito estado</p>
+                            <a href="#yamaha-details" class="view-listing">Ver detalhes</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASIDE COM INFORMAÇÕES ADICIONAIS -->
+        <aside class="additional-info">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🛡️ Garantia Incluída</h3>
+                        <p>Todos os nossos veículos incluem garantia para sua tranquilidade</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📄 Documentação</h3>
+                        <p>Documentação completa e legalizada, pronta para transferência</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>💰 Financiamento</h3>
+                        <p>Condições especiais de financiamento disponíveis</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- SECÇÃO DE SERVIÇOS -->
+        <section id="servicos" class="services-section">
+            <div class="container">
+                <h2 class="section-title">Nossos Serviços</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Venda de Viaturas</h3>
+                        <p>Ampla seleção de carros e motas usados com garantia</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Test Drives</h3>
+                        <p>Experimente o veículo antes de decidir</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Avaliações</h3>
+                        <p>Avaliamos o seu veículo actual para troca</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAIS DOS DETALHES -->
+    <!-- Modal BMW -->
+    <div id="bmw-details" class="modal">
         <div class="modal-content">
-            <div class="modal-header"></div>
+            <a href="#" class="close-modal">&times;</a>
             <div class="modal-body">
-                <h2 class="modal-title"></h2>
-                <div class="modal-price"></div>
+                <div class="modal-images">
+                    <div class="listing-image" style="background-image: url('imagens/bmw.png'); height: 300px;"></div>
+                </div>
                 
-                <div class="modal-details"></div>
+                <h2>BMW 320d</h2>
+                <div class="listing-price">28.500 €</div>
+                
+                <div class="modal-specs">
+                    <div class="spec-item">
+                        <strong>Marca:</strong> BMW
+                    </div>
+                    <div class="spec-item">
+                        <strong>Modelo:</strong> Série 3 320d
+                    </div>
+                    <div class="spec-item">
+                        <strong>Ano:</strong> 2019
+                    </div>
+                    <div class="spec-item">
+                        <strong>Quilómetros:</strong> 85.000 km
+                    </div>
+                    <div class="spec-item">
+                        <strong>Combustível:</strong> Diesel
+                    </div>
+                    <div class="spec-item">
+                        <strong>Potência:</strong> 190 cv
+                    </div>
+                    <div class="spec-item">
+                        <strong>Cor:</strong> Azul
+                    </div>
+                    <div class="spec-item">
+                        <strong>Caixa:</strong> Automática
+                    </div>
+                    <div class="spec-item">
+                        <strong>Garantia:</strong> 12 meses
+                    </div>
+                </div>
                 
                 <div class="modal-description">
                     <h3>Descrição</h3>
-                    <p></p>
+                    <p>BMW 320d Luxury em excelente estado, com manutenção sempre feita na marca. Equipado com pacote Luxury, navegação, bancos em pele e sensores de estacionamento.</p>
                 </div>
                 
-                <div class="seller-info">
-                    <h3>Informações do Stand</h3>
-                    <p><strong>Carchoise LDA</strong></p>
-                    <p>Telemóvel: +351 939 058 907</p>
-                    <p>Email: carchoise.lda@gmail.com</p>
-                    <p>Horário: Disponível mediante marcação prévia</p>
-                    <p class="guarantee-text">✓ Garantia incluída</p>
-                </div>
-                
-                <div class="contact-seller">
-                    <button class="contact-btn call">Ligar Agora</button>
-                    <a href="https://forms.gle/o6YXAgdEVMhAMfDd8" target="_blank" class="contact-btn message">Agendar Test Drive</a>
+                <div class="modal-contact">
+                    <h3>Interessado neste veículo?</h3>
+                    <div class="contact-actions">
+                        <a href="tel:+351939058907" class="contact-btn">📞 Ligar Agora</a>
+                        <a href="contactos.html" class="contact-btn secondary">📧 Contactar</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Carchoise</h3>
-                    <ul>
-                        <li><a href="#">Sobre nós</a></li>
-                        <li><a href="contactos.html">Contactos</a></li>
-                    </ul>
+    <!-- Modal Audi -->
+    <div id="audi-details" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-modal">&times;</a>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <div class="listing-image" style="background-image: url('imagens/audi.png'); height: 300px;"></div>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Serviços</h3>
-                    <ul>
-                        <li><a href="#">Venda de viaturas</a></li>
-                        <li><a href="#">Financiamento</a></li>
-                    </ul>
+                <h2>Audi A4 Avant</h2>
+                <div class="listing-price">32.900 €</div>
+                
+                <div class="modal-specs">
+                    <div class="spec-item">
+                        <strong>Marca:</strong> Audi
+                    </div>
+                    <div class="spec-item">
+                        <strong>Modelo:</strong> A4 Avant
+                    </div>
+                    <div class="spec-item">
+                        <strong>Ano:</strong> 2020
+                    </div>
+                    <div class="spec-item">
+                        <strong>Quilómetros:</strong> 45.000 km
+                    </div>
+                    <div class="spec-item">
+                        <strong>Combustível:</strong> Diesel
+                    </div>
+                    <div class="spec-item">
+                        <strong>Potência:</strong> 150 cv
+                    </div>
+                    <div class="spec-item">
+                        <strong>Cor:</strong> Cinza
+                    </div>
+                    <div class="spec-item">
+                        <strong>Caixa:</strong> Automática
+                    </div>
+                    <div class="spec-item">
+                        <strong>Garantia:</strong> 12 meses
+                    </div>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Para Clientes</h3>
-                    <ul>
-                        <li><a href="catalogo.html">Catálogo de veículos</a></li>
-                        <li><a href="https://forms.gle/o6YXAgdEVMhAMfDd8" target = "_blank">Test Drive</a></li>
-                        <li><a href="#">Garantias</a></li>
-                        <li><a href="#">Pós-venda</a></li>
-                    </ul>
+                <div class="modal-description">
+                    <h3>Descrição</h3>
+                    <p>Audi A4 Avant 2.0 TDI S tronic sport, único dono, sempre de garagem. Equipamento completo: teto solar, bancos desportivos, sistema de som premium.</p>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Ajuda</h3>
-                    <ul>
-                        <li><a href="#">Termos e condições</a></li>
-                        <li><a href="#">Política de privacidade</a></li>
-                    </ul>
+                <div class="modal-contact">
+                    <h3>Interessado neste veículo?</h3>
+                    <div class="contact-actions">
+                        <a href="tel:+351939058907" class="contact-btn">📞 Ligar Agora</a>
+                        <a href="contactos.html" class="contact-btn secondary">📧 Contactar</a>
+                    </div>
                 </div>
             </div>
-            
+        </div>
+    </div>
+
+    <!-- Modal Mercedes -->
+    <div id="mercedes-details" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-modal">&times;</a>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <div class="listing-image" style="background-image: url('imagens/mercedes.png'); height: 300px;"></div>
+                </div>
+                
+                <h2>Mercedes-Benz C300h</h2>
+                <div class="listing-price">35.750 €</div>
+                
+                <div class="modal-specs">
+                    <div class="spec-item">
+                        <strong>Marca:</strong> Mercedes-Benz
+                    </div>
+                    <div class="spec-item">
+                        <strong>Modelo:</strong> C300h
+                    </div>
+                    <div class="spec-item">
+                        <strong>Ano:</strong> 2021
+                    </div>
+                    <div class="spec-item">
+                        <strong>Quilómetros:</strong> 30.000 km
+                    </div>
+                    <div class="spec-item">
+                        <strong>Combustível:</strong> Híbrido
+                    </div>
+                    <div class="spec-item">
+                        <strong>Potência:</strong> 228 cv
+                    </div>
+                    <div class="spec-item">
+                        <strong>Cor:</strong> Preto
+                    </div>
+                    <div class="spec-item">
+                        <strong>Caixa:</strong> Automática
+                    </div>
+                    <div class="spec-item">
+                        <strong>Garantia:</strong> 12 meses
+                    </div>
+                </div>
+                
+                <div class="modal-description">
+                    <h3>Descrição</h3>
+                    <p>Mercedes-Benz C300h AMG Line, tecnologia híbrida plug-in, consumo reduzido. Jantes AMG, faróis LED, interior em pele e madeira.</p>
+                </div>
+                
+                <div class="modal-contact">
+                    <h3>Interessado neste veículo?</h3>
+                    <div class="contact-actions">
+                        <a href="tel:+351939058907" class="contact-btn">📞 Ligar Agora</a>
+                        <a href="contactos.html" class="contact-btn secondary">📧 Contactar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Yamaha -->
+    <div id="yamaha-details" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-modal">&times;</a>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <div class="listing-image" style="background-image: url('imagens/yamaha.png'); height: 300px;"></div>
+                </div>
+                
+                <h2>Yamaha MT-07</h2>
+                <div class="listing-price">6.990 €</div>
+                
+                <div class="modal-specs">
+                    <div class="spec-item">
+                        <strong>Marca:</strong> Yamaha
+                    </div>
+                    <div class="spec-item">
+                        <strong>Modelo:</strong> MT-07
+                    </div>
+                    <div class="spec-item">
+                        <strong>Ano:</strong> 2018
+                    </div>
+                    <div class="spec-item">
+                        <strong>Quilómetros:</strong> 12.000 km
+                    </div>
+                    <div class="spec-item">
+                        <strong>Combustível:</strong> Gasolina
+                    </div>
+                    <div class="spec-item">
+                        <strong>Cilindrada:</strong> 689 cc
+                    </div>
+                    <div class="spec-item">
+                        <strong>Cor:</strong> Preto
+                    </div>
+                    <div class="spec-item">
+                        <strong>Tipo:</strong> Naked
+                    </div>
+                    <div class="spec-item">
+                        <strong>Garantia:</strong> 6 meses
+                    </div>
+                </div>
+                
+                <div class="modal-description">
+                    <h3>Descrição</h3>
+                    <p>Yamaha MT-07 em perfeito estado, sempre guardada em garagem. Inclui capa e documentação completa. Mota ágil e divertida.</p>
+                </div>
+                
+                <div class="modal-contact">
+                    <h3>Interessado neste veículo?</h3>
+                    <div class="contact-actions">
+                        <a href="tel:+351939058907" class="contact-btn">📞 Ligar Agora</a>
+                        <a href="contactos.html" class="contact-btn secondary">📧 Contactar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER SEMÂNTICO -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Carchoise LDA</h3>
+                    <p>O seu stand automóvel de confiança desde 2024</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contactos</h3>
+                    <p>+351 939 058 907</p>
+                    <p>carchoise.lda@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Localização</h3>
+                    <p>Rua Alves de Sá 84</p>
+                    <p>Algueirão-Mem Martins</p>
+                </div>
+            </div>
             <div class="copyright">
-                &copy; 2024 Carchoise LDA - Todos os direitos reservados.
+                <p>&copy; 2024 Carchoise LDA - Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>

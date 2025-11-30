@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos - Carchoise</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="imagens/logo.png">
+    <style>
+        /* Estilos específicos para a página de contactos */
+        .contact-hero {
+            background: linear-gradient(rgba(26, 58, 95, 0.9), rgba(26, 58, 95, 0.9)), url('imagens/banner.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .contact-content {
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-email .contact-icon { color: #d44638; }
+        .contact-phone .contact-icon { color: #4CAF50; }
+
+        .contact-card h3 {
+            color: #1a3a5f;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .contact-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .contact-btn:hover {
+            opacity: 0.9;
+        }
+
+        .contact-email .contact-btn { 
+            background-color: #d44638; 
+        }
+
+        .contact-phone .contact-btn { 
+            background-color: #4CAF50; 
+        }
+
+        .business-info {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .business-info h3 {
+            color: #1a3a5f;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            font-size: 1.2rem;
+            color: #ffcc00;
+            min-width: 30px;
+        }
+
+        .info-item strong {
+            color: #1a3a5f;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .response-time {
+            background-color: #e8f5e8;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .response-time strong {
+            color: #2e7d32;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-card {
+                padding: 1.5rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Carchoise</div>
+                <nav>
+                    <ul>
+                        <li><a href="inicio.html">Início</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Sobre</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <a href="#">Favoritos</a>
+                    <a href="contactos.html" style="color: #ffcc00;">Contacte-nos</a>
+                    <a href="#" class="login">Área Cliente</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner de Contactos -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contacte a Carchoise</h1>
+            <p>Estamos aqui para ajudar a encontrar o veículo perfeito para si</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Email -->
+                <div class="contact-card contact-email">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <div class="contact-info">carchoise.lda@gmail.com</div>
+                    <p class="contact-description">Envie-nos um email para questões detalhadas, orçamentos ou documentação. Respondemos rapidamente a todas as suas questões.</p>
+                    <button class="contact-btn email-btn">Enviar Email</button>
+                    <div class="response-time">
+                        <strong>Resposta o mais rápido possível</strong> durante o horário comercial
+                    </div>
+                </div>
+
+                <!-- Telemóvel -->
+                <div class="contact-card contact-phone">
+                    <div class="contact-icon">📱</div>
+                    <h3>Telemóvel</h3>
+                    <div class="contact-info">+351 939 058 907</div>
+                    <p class="contact-description">Ligue-nos directamente para marcações de test drive ou questões urgentes. Atendimento personalizado e especializado.</p>
+                    <button class="contact-btn call-btn">Ligar Agora</button>
+                    <div class="response-time">
+                        <strong>Disponível</strong> todos os dias
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informações do Negócio -->
+            <div class="business-info">
+                <h3>Informações do Stand</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">🏢</div>
+                        <div>
+                            <strong>Carchoise LDA</strong><br>
+                            O seu stand automóvel de confiança
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">⏰</div>
+                        <div>
+                            <strong>Horário de Funcionamento</strong><br>
+                            Segunda a Sábado:<br>
+                            Mediante marcação prévia
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div>
+                            <strong>Localização</strong><br>
+                            Rua Alves de Sá 84<br>
+                            Algueirão-Mem Martins
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">✓</div>
+                        <div>
+                            <strong>Serviços</strong><br>
+                            Venda de viaturas<br>
+                            Financiamento
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapa -->
+            <div class="map-container">
+                <iframe 
+                    src="https://maps.google.com/maps?q=Rua%20Alves%20de%20S%C3%A1%2084%2C%202725-079%20Mem%20Martins&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Carchoise</h3>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="contactos.html">Contactos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Venda de viaturas</a></li>
+                        <li><a href="#">Financiamento</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Para Clientes</h3>
+                    <ul>
+                        <li><a href="inicio.html">Catálogo de veículos</a></li>
+                        <li><a href="https://forms.gle/o6YXAgdEVMhAMfDd8" target="_blank">Test Drive</a></li>
+                        <li><a href="#">Garantias</a></li>
+                        <li><a href="#">Pós-venda</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ajuda</h3>
+                    <ul>
+                        <li><a href="#">Termos e condições</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 Carchoise LDA - Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Ligação ao JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- Script específico para a página de contactos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página de contactos carregada');
+            
+            // Botão de ligar
+            const callBtn = document.querySelector('.call-btn');
+            if (callBtn) {
+                callBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('A ligar para +351 939 058 907...');
+                });
+            }
+            
+            // Botão de email
+            const emailBtn = document.querySelector('.email-btn');
+            if (emailBtn) {
+                emailBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('A abrir cliente de email para carchoise.lda@gmail.com...');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

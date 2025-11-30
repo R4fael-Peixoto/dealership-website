@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carchoise - O Seu Stand Automóvel de Confiança</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="imagens/logo.png">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Carchoise</div>
+                <nav>
+                    <ul>
+                        <li><a href="inicio.html" style="color: #ffcc00;">Início</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Sobre</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <a href="#">Favoritos</a>
+                    <a href="contactos.html">Contacte-nos</a>
+                    <a href="#" class="login">Área Cliente</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner principal -->
+    <section class="hero">
+        <div class="container">
+            <h1>O seu stand automóvel de confiança</h1>
+            <p>Encontre o seu novo carro ou mota ao melhor preço com a Carchoise</p>
+            
+            <form class="search-form" id="search-form">
+                <div class="search-grid">
+                    <div class="search-field">
+                        <label for="marca">Marca</label>
+                        <select id="marca">
+                            <option value="">Qualquer marca</option>
+                            <option value="audi">Audi</option>
+                            <option value="bmw">BMW</option>
+                            <option value="ford">Ford</option>
+                            <option value="mercedes">Mercedes-Benz</option>
+                            <option value="renault">Renault</option>
+                            <option value="toyota">Toyota</option>
+                            <option value="volkswagen">Volkswagen</option>
+                            <option value="yamaha">Yamaha</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="combustivel">Combustível</label>
+                        <select id="combustivel">
+                            <option value="">Qualquer combustível</option>
+                            <option value="gasolina">Gasolina</option>
+                            <option value="diesel">Diesel</option>
+                            <option value="eletrico">Elétrico</option>
+                            <option value="hibrido">Híbrido</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="preco">Preço (até)</label>
+                        <select id="preco">
+                            <option value="">Sem limite</option>
+                            <option value="5000">5.000 €</option>
+                            <option value="10000">10.000 €</option>
+                            <option value="15000">15.000 €</option>
+                            <option value="20000">20.000 €</option>
+                            <option value="25000">25.000 €</option>
+                            <option value="30000">30.000 €</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="ano">Ano (desde)</label>
+                        <select id="ano">
+                            <option value="">Qualquer ano</option>
+                            <option value="2020">2020</option>
+                            <option value="2018">2018</option>
+                            <option value="2016">2016</option>
+                            <option value="2014">2014</option>
+                            <option value="2012">2012</option>
+                            <option value="2010">2010</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="quilometros">Quilómetros (até)</label>
+                        <select id="quilometros">
+                            <option value="">Sem limite</option>
+                            <option value="50000">50.000 km</option>
+                            <option value="100000">100.000 km</option>
+                            <option value="150000">150.000 km</option>
+                            <option value="200000">200.000 km</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="search-actions">
+                    <a href="#" class="advanced-search" id="reset-filters">Limpar filtros</a>
+                    <button type="submit" class="search-btn">Pesquisar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Anúncios em destaque -->
+    <section class="listings">
+        <div class="container">
+            <h2 class="section-title">Veículos em Destaque</h2>
+            <div id="listings-container" class="listings-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de detalhes do anúncio -->
+    <div id="listing-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <button class="close-modal" aria-label="Fechar modal">&times;</button>
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body">
+                <h2 class="modal-title"></h2>
+                <div class="modal-price"></div>
+                
+                <div class="modal-details"></div>
+                
+                <div class="modal-description">
+                    <h3>Descrição</h3>
+                    <p></p>
+                </div>
+                
+                <div class="seller-info">
+                    <h3>Informações do Stand</h3>
+                    <p><strong>Carchoise LDA</strong></p>
+                    <p>Telemóvel: +351 939 058 907</p>
+                    <p>Email: carchoise.lda@gmail.com</p>
+                    <p>Horário: Disponível mediante marcação prévia</p>
+                    <p class="guarantee-text">✓ Garantia incluída</p>
+                </div>
+                
+                <div class="contact-seller">
+                    <button class="contact-btn call">Ligar Agora</button>
+                    <a href="https://forms.gle/o6YXAgdEVMhAMfDd8" target="_blank" class="contact-btn message">Agendar Test Drive</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Carchoise</h3>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="contactos.html">Contactos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Venda de viaturas</a></li>
+                        <li><a href="#">Financiamento</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Para Clientes</h3>
+                    <ul>
+                        <li><a href="inicio.html">Catálogo de veículos</a></li>
+                        <li><a href="https://forms.gle/o6YXAgdEVMhAMfDd8" target = "_blank">Test Drive</a></li>
+                        <li><a href="#">Garantias</a></li>
+                        <li><a href="#">Pós-venda</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ajuda</h3>
+                    <ul>
+                        <li><a href="#">Termos e condições</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 Carchoise LDA - Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

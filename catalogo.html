@@ -37,165 +37,124 @@
 
         <section class="catalog-content">
             <div class="container">
-                <div class="catalog-layout">
-                    <!-- Filtros Laterais -->
-                    <aside class="filters-sidebar">
-                        <h3>Filtros</h3>
-                        <div class="filter-section">
-                            <h4>Marca</h4>
-                            <div class="filter-options">
-                                <label><input type="checkbox"> Audi</label>
-                                <label><input type="checkbox"> BMW</label>
-                                <label><input type="checkbox"> Ford</label>
-                                <label><input type="checkbox"> Mercedes-Benz</label>
-                                <label><input type="checkbox"> Renault</label>
-                                <label><input type="checkbox"> Toyota</label>
-                                <label><input type="checkbox"> Yamaha</label>
+                <div class="catalog-main">
+                    <div class="catalog-header">
+                        <h2 class="section-title">Todos os Veículos</h2>
+                        <span class="results-count">7 veículos disponíveis</span>
+                    </div>
+
+                    <div class="listings-grid">
+                        <!-- BMW -->
+                        <article class="listing-card">
+                            <div class="listing-image" style="background-image: url('imagens/bmw.png')"></div>
+                            <div class="listing-details">
+                                <h3 class="listing-title">BMW 320d</h3>
+                                <div class="listing-price">28.500 €</div>
+                                <div class="listing-info">
+                                    <span>2019</span>
+                                    <span>85.000 km</span>
+                                    <span>Diesel</span>
+                                </div>
+                                <p class="listing-description">BMW 320d Luxury em excelente estado</p>
+                                <a href="#bmw-details" class="view-listing">Ver detalhes</a>
                             </div>
-                        </div>
-                        
-                        <div class="filter-section">
-                            <h4>Combustível</h4>
-                            <div class="filter-options">
-                                <label><input type="checkbox"> Gasolina</label>
-                                <label><input type="checkbox"> Diesel</label>
-                                <label><input type="checkbox"> Híbrido</label>
-                                <label><input type="checkbox"> Elétrico</label>
+                        </article>
+
+                        <!-- Audi -->
+                        <article class="listing-card">
+                            <div class="listing-image" style="background-image: url('imagens/audi.png')"></div>
+                            <div class="listing-details">
+                                <h3 class="listing-title">Audi A4 Avant</h3>
+                                <div class="listing-price">32.900 €</div>
+                                <div class="listing-info">
+                                    <span>2020</span>
+                                    <span>45.000 km</span>
+                                    <span>Diesel</span>
+                                </div>
+                                <p class="listing-description">Audi A4 Avant 2.0 TDI S tronic sport</p>
+                                <a href="#audi-details" class="view-listing">Ver detalhes</a>
                             </div>
-                        </div>
-                        
-                        <div class="filter-section">
-                            <h4>Preço</h4>
-                            <div class="price-range">
-                                <input type="range" min="0" max="50000" value="30000" class="price-slider">
-                                <div class="price-labels">
-                                    <span>0 €</span>
-                                    <span>50.000 €</span>
+                        </article>
+
+                        <!-- Mercedes -->
+                        <article class="listing-card">
+                            <div class="listing-image" style="background-image: url('imagens/mercedes.png')"></div>
+                            <div class="listing-details">
+                                <h3 class="listing-title">Mercedes-Benz C300h</h3>
+                                <div class="listing-price">35.750 €</div>
+                                <div class="listing-info">
+                                    <span>2021</span>
+                                    <span>30.000 km</span>
+                                    <span>Híbrido</span>
                                 </div>
+                                <p class="listing-description">Mercedes-Benz C300h AMG Line</p>
+                                <a href="#mercedes-details" class="view-listing">Ver detalhes</a>
                             </div>
-                        </div>
-                    </aside>
+                        </article>
 
-                    <!-- Conteúdo do Catálogo -->
-                    <div class="catalog-main">
-                        <div class="catalog-header">
-                            <h2 class="section-title">Todos os Veículos</h2>
-                            <span class="results-count">7 veículos disponíveis</span>
-                        </div>
-
-                        <div class="listings-grid">
-                            <!-- BMW -->
-                            <article class="listing-card">
-                                <div class="listing-image" style="background-image: url('imagens/bmw.png')"></div>
-                                <div class="listing-details">
-                                    <h3 class="listing-title">BMW 320d</h3>
-                                    <div class="listing-price">28.500 €</div>
-                                    <div class="listing-info">
-                                        <span>2019</span>
-                                        <span>85.000 km</span>
-                                        <span>Diesel</span>
-                                    </div>
-                                    <p class="listing-description">BMW 320d Luxury em excelente estado</p>
-                                    <a href="#bmw-details" class="view-listing">Ver detalhes</a>
+                        <!-- Yamaha -->
+                        <article class="listing-card">
+                            <div class="listing-image" style="background-image: url('imagens/yamaha.png')"></div>
+                            <div class="listing-details">
+                                <h3 class="listing-title">Yamaha MT-07</h3>
+                                <div class="listing-price">6.990 €</div>
+                                <div class="listing-info">
+                                    <span>2018</span>
+                                    <span>12.000 km</span>
+                                    <span>Gasolina</span>
                                 </div>
-                            </article>
+                                <p class="listing-description">Yamaha MT-07 em perfeito estado</p>
+                                <a href="#yamaha-details" class="view-listing">Ver detalhes</a>
+                            </div>
+                        </article>
 
-                            <!-- Audi -->
-                            <article class="listing-card">
-                                <div class="listing-image" style="background-image: url('imagens/audi.png')"></div>
-                                <div class="listing-details">
-                                    <h3 class="listing-title">Audi A4 Avant</h3>
-                                    <div class="listing-price">32.900 €</div>
-                                    <div class="listing-info">
-                                        <span>2020</span>
-                                        <span>45.000 km</span>
-                                        <span>Diesel</span>
-                                    </div>
-                                    <p class="listing-description">Audi A4 Avant 2.0 TDI S tronic sport</p>
-                                    <a href="#audi-details" class="view-listing">Ver detalhes</a>
+                        <!-- Ford -->
+                        <article class="listing-card">
+                            <div class="listing-image" style="background-image: url('imagens/ford.png')"></div>
+                            <div class="listing-details">
+                                <h3 class="listing-title">Ford Focus</h3>
+                                <div class="listing-price">13.900 €</div>
+                                <div class="listing-info">
+                                    <span>2018</span>
+                                    <span>65.000 km</span>
+                                    <span>Gasolina</span>
                                 </div>
-                            </article>
+                                <p class="listing-description">Ford Focus 1.0 EcoBoost Titanium</p>
+                                <a href="#ford-details" class="view-listing">Ver detalhes</a>
+                            </div>
+                        </article>
 
-                            <!-- Mercedes -->
-                            <article class="listing-card">
-                                <div class="listing-image" style="background-image: url('imagens/mercedes.png')"></div>
-                                <div class="listing-details">
-                                    <h3 class="listing-title">Mercedes-Benz C300h</h3>
-                                    <div class="listing-price">35.750 €</div>
-                                    <div class="listing-info">
-                                        <span>2021</span>
-                                        <span>30.000 km</span>
-                                        <span>Híbrido</span>
-                                    </div>
-                                    <p class="listing-description">Mercedes-Benz C300h AMG Line</p>
-                                    <a href="#mercedes-details" class="view-listing">Ver detalhes</a>
+                        <!-- Toyota -->
+                        <article class="listing-card">
+                            <div class="listing-image" style="background-image: url('imagens/toyota.png')"></div>
+                            <div class="listing-details">
+                                <h3 class="listing-title">Toyota Corolla</h3>
+                                <div class="listing-price">22.900 €</div>
+                                <div class="listing-info">
+                                    <span>2020</span>
+                                    <span>35.000 km</span>
+                                    <span>Híbrido</span>
                                 </div>
-                            </article>
+                                <p class="listing-description">Toyota Corolla 1.8 Hybrid Comfort</p>
+                                <a href="#toyota-details" class="view-listing">Ver detalhes</a>
+                            </div>
+                        </article>
 
-                            <!-- Yamaha -->
-                            <article class="listing-card">
-                                <div class="listing-image" style="background-image: url('imagens/yamaha.png')"></div>
-                                <div class="listing-details">
-                                    <h3 class="listing-title">Yamaha MT-07</h3>
-                                    <div class="listing-price">6.990 €</div>
-                                    <div class="listing-info">
-                                        <span>2018</span>
-                                        <span>12.000 km</span>
-                                        <span>Gasolina</span>
-                                    </div>
-                                    <p class="listing-description">Yamaha MT-07 em perfeito estado</p>
-                                    <a href="#yamaha-details" class="view-listing">Ver detalhes</a>
+                        <!-- Renault -->
+                        <article class="listing-card">
+                            <div class="listing-image" style="background-image: url('imagens/renault.png')"></div>
+                            <div class="listing-details">
+                                <h3 class="listing-title">Renault Kadjar</h3>
+                                <div class="listing-price">11.950 €</div>
+                                <div class="listing-info">
+                                    <span>2016</span>
+                                    <span>116.500 km</span>
+                                    <span>Gasolina</span>
                                 </div>
-                            </article>
-
-                            <!-- Ford -->
-                            <article class="listing-card">
-                                <div class="listing-image" style="background-image: url('imagens/ford.png')"></div>
-                                <div class="listing-details">
-                                    <h3 class="listing-title">Ford Focus</h3>
-                                    <div class="listing-price">13.900 €</div>
-                                    <div class="listing-info">
-                                        <span>2018</span>
-                                        <span>65.000 km</span>
-                                        <span>Gasolina</span>
-                                    </div>
-                                    <p class="listing-description">Ford Focus 1.0 EcoBoost Titanium</p>
-                                    <a href="#ford-details" class="view-listing">Ver detalhes</a>
-                                </div>
-                            </article>
-
-                            <!-- Toyota -->
-                            <article class="listing-card">
-                                <div class="listing-image" style="background-image: url('imagens/toyota.png')"></div>
-                                <div class="listing-details">
-                                    <h3 class="listing-title">Toyota Corolla</h3>
-                                    <div class="listing-price">22.900 €</div>
-                                    <div class="listing-info">
-                                        <span>2020</span>
-                                        <span>35.000 km</span>
-                                        <span>Híbrido</span>
-                                    </div>
-                                    <p class="listing-description">Toyota Corolla 1.8 Hybrid Comfort</p>
-                                    <a href="#toyota-details" class="view-listing">Ver detalhes</a>
-                                </div>
-                            </article>
-
-                            <!-- Renault -->
-                            <article class="listing-card">
-                                <div class="listing-image" style="background-image: url('imagens/renault.png')"></div>
-                                <div class="listing-details">
-                                    <h3 class="listing-title">Renault Kadjar</h3>
-                                    <div class="listing-price">11.950 €</div>
-                                    <div class="listing-info">
-                                        <span>2016</span>
-                                        <span>116.500 km</span>
-                                        <span>Gasolina</span>
-                                    </div>
-                                    <p class="listing-description">Renault Kadjar 1.2 TCe Energy Intens</p>
-                                    <a href="#renault-details" class="view-listing">Ver detalhes</a>
-                                </div>
-                            </article>
-                        </div>
+                                <p class="listing-description">Renault Kadjar 1.2 TCe Energy Intens</p>
+                                <a href="#renault-details" class="view-listing">Ver detalhes</a>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -377,7 +336,6 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">

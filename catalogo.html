@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Carchoise</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="imagens/logo.png">
+    <style>
+        /* Estilos específicos para a página de catálogo */
+        .catalog-hero {
+            background: linear-gradient(rgba(26, 58, 95, 0.9), rgba(26, 58, 95, 0.9)), url('imagens/banner.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .catalog-content {
+            padding: 2rem 0;
+        }
+
+        .catalog-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* Filtros laterais */
+        .filters-sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 2rem;
+        }
+
+        .filter-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .filter-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .filter-section h3 {
+            color: #1a3a5f;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-section h3::before {
+            content: "⏷";
+            font-size: 0.9rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.3rem 0;
+        }
+
+        .filter-option input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .filter-option label {
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .price-range {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .range-inputs {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .range-inputs input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            min-width: 0; 
+        }
+
+        .range-separator {
+            color: #666;
+            font-weight: bold;
+            text-align: center;
+            min-width: 20px;
+        }
+
+        /* Cabeçalho do catálogo */
+        .catalog-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .results-info {
+            flex: 1;
+        }
+
+        .sort-options {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .sort-select {
+            padding: 0.7rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            font-size: 0.9rem;
+            min-width: 200px;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .view-btn {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .view-btn.active {
+            background: #1a3a5f;
+            color: white;
+            border-color: #1a3a5f;
+        }
+
+        /* Layouts diferentes para os anúncios */
+        .listings-grid.compact {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .listings-grid.list {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .listing-card.list-layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1rem;
+        }
+
+        .listing-card.list-layout .listing-image {
+            height: 150px;
+            border-radius: 4px;
+        }
+
+        .listing-card.list-layout .listing-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem 1rem 1rem 0;
+        }
+
+        .listing-card.list-layout .listing-info {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Botões de ação */
+        .filter-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .apply-filters {
+            background: #1a3a5f;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .apply-filters:hover {
+            background: #0f2a46;
+        }
+
+        .reset-filters {
+            background: transparent;
+            color: #666;
+            border: 1px solid #ddd;
+            padding: 0.7rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .reset-filters:hover {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Estados ativos dos filtros */
+        .filter-option.active {
+            background: #f0f7ff;
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            margin: 0 -0.5rem;
+        }
+
+        .filter-option.active label {
+            color: #1a3a5f;
+            font-weight: 500;
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .catalog-layout {
+                grid-template-columns: 250px 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .catalog-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters-sidebar {
+                position: static;
+                margin-bottom: 1rem;
+            }
+            
+            .catalog-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .sort-options {
+                justify-content: space-between;
+            }
+            
+            .listing-card.list-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .listing-card.list-layout .listing-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Carchoise</div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="catalogo.html" style="color: #ffcc00;">Catálogo</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Sobre</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <a href="contactos.html">Contacte-nos</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner do Catálogo -->
+    <section class="catalog-hero">
+        <div class="container">
+            <h1>Catálogo Completo</h1>
+            <p>Explore todos os nossos veículos disponíveis</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <section class="catalog-content">
+        <div class="container">
+            <div class="catalog-layout">
+                <!-- Filtros Laterais -->
+                <aside class="filters-sidebar">
+                    <div class="filter-section">
+                        <h3>Ordenar por</h3>
+                        <div class="filter-options">
+                            <select id="sort-by" class="sort-select">
+                                <option value="recent">Anúncios mais recentes</option>
+                                <option value="price_asc">Preço: Menor para Maior</option>
+                                <option value="price_desc">Preço: Maior para Menor</option>
+                                <option value="year_desc">Ano: Mais recente</option>
+                                <option value="year_asc">Ano: Mais antigo</option>
+                                <option value="km_asc">Quilómetros: Menor para Maior</option>
+                                <option value="km_desc">Quilómetros: Maior para Menor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Marca</h3>
+                        <div class="filter-options" id="brand-filters">
+                            <!-- Gerado dinamicamente pelo JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Combustível</h3>
+                        <div class="filter-options" id="fuel-filters">
+                            <!-- Gerado dinamicamente pelo JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Preço</h3>
+                        <div class="price-range">
+                            <div class="range-inputs">
+                                <input type="number" id="min-price" placeholder="Mín" min="0">
+                                <span class="range-separator">-</span>
+                                <input type="number" id="max-price" placeholder="Máx" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Ano</h3>
+                        <div class="price-range">
+                            <div class="range-inputs">
+                                <input type="number" id="min-year" placeholder="Desde" min="1990" max="2024">
+                                <span class="range-separator">-</span>
+                                <input type="number" id="max-year" placeholder="Até" min="1990" max="2024">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Quilómetros</h3>
+                        <div class="price-range">
+                            <div class="range-inputs">
+                                <input type="number" id="min-km" placeholder="Mín" min="0">
+                                <span class="range-separator">-</span>
+                                <input type="number" id="max-km" placeholder="Máx" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button class="apply-filters" id="apply-catalog-filters">Aplicar Filtros</button>
+                        <button class="reset-filters" id="reset-catalog-filters">Limpar Filtros</button>
+                    </div>
+                </aside>
+
+                <!-- Conteúdo dos Anúncios -->
+                <main class="catalog-main">
+                    <div class="catalog-header">
+                        <div class="results-info">
+                            <h2 class="section-title">Todos os Veículos</h2>
+                            <span class="results-count" id="catalog-results-count"></span>
+                        </div>
+                        
+                        <div class="sort-options">
+                            <div class="view-options">
+                                <button class="view-btn active" data-view="grid" title="Vista em grelha">⧄</button>
+                                <button class="view-btn" data-view="list" title="Vista em lista">⧉</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="catalog-listings-container" class="listings-grid">
+                        <!-- Anúncios carregados pelo JavaScript -->
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de detalhes (reutilizado da página principal) -->
+    <div id="listing-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <button class="close-modal" aria-label="Fechar modal">&times;</button>
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body">
+                <h2 class="modal-title"></h2>
+                <div class="modal-price"></div>
+                
+                <div class="modal-details"></div>
+                
+                <div class="modal-description">
+                    <h3>Descrição</h3>
+                    <p></p>
+                </div>
+                
+                <div class="seller-info">
+                    <h3>Informações do Stand</h3>
+                    <p><strong>Carchoise LDA</strong></p>
+                    <p>Telemóvel: +351 939 058 907</p>
+                    <p>Email: carchoise.lda@gmail.com</p>
+                    <p>Horário: Disponível mediante marcação prévia</p>
+                    <p class="guarantee-text">✓ Garantia incluída</p>
+                </div>
+                
+                <div class="contact-seller">
+                    <button class="contact-btn call">Ligar Agora</button>
+                    <a href="https://forms.gle/o6YXAgdEVMhAMfDd8" target="_blank" class="contact-btn message">Agendar Test Drive</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Carchoise</h3>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="contactos.html">Contactos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Venda de viaturas</a></li>
+                        <li><a href="#">Financiamento</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Para Clientes</h3>
+                    <ul>
+                        <li><a href="catalogo.html">Catálogo de veículos</a></li>
+                        <li><a href="https://forms.gle/o6YXAgdEVMhAMfDd8" target="_blank">Test Drive</a></li>
+                        <li><a href="#">Garantias</a></li>
+                        <li><a href="#">Pós-venda</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ajuda</h3>
+                    <ul>
+                        <li><a href="#">Termos e condições</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 Carchoise LDA - Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para o catálogo -->
+    <script>
+        // Dados e estado do catálogo
+        let catalogState = {
+            sortBy: 'recent',
+            filters: {
+                brands: [],
+                fuels: [],
+                minPrice: null,
+                maxPrice: null,
+                minYear: null,
+                maxYear: null,
+                minKm: null,
+                maxKm: null
+            },
+            view: 'grid'
+        };
+
+        // Inicializar catálogo
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Catálogo carregado');
+            initCatalog();
+        });
+
+        function initCatalog() {
+            // Gerar filtros dinâmicos
+            generateBrandFilters();
+            generateFuelFilters();
+            
+            // Carregar anúncios iniciais
+            applyCatalogFilters();
+            
+            // Event listeners
+            initCatalogEvents();
+        }
+
+        function generateBrandFilters() {
+            const brandsContainer = document.getElementById('brand-filters');
+    
+            // Ordem exata da página inicial
+            const brandOrder = [
+                'audi', 'bmw', 'ford', 'mercedes', 'renault', 'toyota', 'volkswagen', 'yamaha'
+            ];
+    
+            // Filtrar apenas marcas que existem nos dados
+            const availableBrands = brandOrder.filter(brand => 
+                listingsData.some(item => item.brand === brand)
+            );
+    
+            brandsContainer.innerHTML = availableBrands.map(brand => {
+                const displayNames = {
+                    'audi': 'Audi',
+                    'bmw': 'BMW',
+                    'ford': 'Ford',
+                    'mercedes': 'Mercedes-Benz',
+                    'renault': 'Renault',
+                    'toyota': 'Toyota',
+                    'volkswagen': 'Volkswagen',
+                    'yamaha': 'Yamaha'
+        };
+        
+                return `
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand-${brand}" value="${brand}">
+                        <label for="brand-${brand}">${displayNames[brand]}</label>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateFuelFilters() {
+            const fuelsContainer = document.getElementById('fuel-filters');
+    
+            // Ordem específica para combustíveis
+            const fuelOrder = ['Gasolina', 'Diesel', 'Híbrido', 'Elétrico'];
+    
+            // Filtrar apenas combustíveis que existem nos dados
+            const availableFuels = fuelOrder.filter(fuel => 
+                listingsData.some(item => item.fuel === fuel)
+            );
+    
+            fuelsContainer.innerHTML = availableFuels.map(fuel => `
+                <div class="filter-option">
+                    <input type="checkbox" id="fuel-${fuel.toLowerCase()}" value="${fuel}">
+                    <label for="fuel-${fuel.toLowerCase()}">${fuel}</label>
+                </div>
+            `).join('');
+        }
+
+        function initCatalogEvents() {
+            // Ordenação
+            document.getElementById('sort-by').addEventListener('change', function(e) {
+                catalogState.sortBy = e.target.value;
+                applyCatalogFilters();
+            });
+
+            // Aplicar filtros
+            document.getElementById('apply-catalog-filters').addEventListener('click', applyCatalogFilters);
+            
+            // Limpar filtros
+            document.getElementById('reset-catalog-filters').addEventListener('click', resetCatalogFilters);
+
+            // Vista (grid/list)
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    catalogState.view = this.dataset.view;
+                    updateCatalogView();
+                });
+            });
+
+            // Filtros de checkbox
+            document.querySelectorAll('#brand-filters input, #fuel-filters input').forEach(checkbox => {
+                checkbox.addEventListener('change', updateActiveFilters);
+            });
+
+            // Filtros de range
+            document.querySelectorAll('#min-price, #max-price, #min-year, #max-year, #min-km, #max-km').forEach(input => {
+                input.addEventListener('input', updateActiveFilters);
+            });
+        }
+
+        function updateActiveFilters() {
+            // Atualizar marcas selecionadas
+            catalogState.filters.brands = Array.from(document.querySelectorAll('#brand-filters input:checked'))
+                .map(cb => cb.value);
+            
+            // Atualizar combustíveis selecionados
+            catalogState.filters.fuels = Array.from(document.querySelectorAll('#fuel-filters input:checked'))
+                .map(cb => cb.value);
+            
+            // Atualizar ranges
+            catalogState.filters.minPrice = document.getElementById('min-price').value || null;
+            catalogState.filters.maxPrice = document.getElementById('max-price').value || null;
+            catalogState.filters.minYear = document.getElementById('min-year').value || null;
+            catalogState.filters.maxYear = document.getElementById('max-year').value || null;
+            catalogState.filters.minKm = document.getElementById('min-km').value || null;
+            catalogState.filters.maxKm = document.getElementById('max-km').value || null;
+
+            // Atualizar estados visuais dos filtros
+            updateFilterVisualState();
+        }
+
+        function updateFilterVisualState() {
+            // Atualizar estado visual dos checkboxes
+            document.querySelectorAll('.filter-option').forEach(option => {
+                const checkbox = option.querySelector('input[type="checkbox"]');
+                if (checkbox.checked) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+        }
+
+        function applyCatalogFilters() {
+            updateActiveFilters();
+            
+            let filtered = [...listingsData];
+
+            // Aplicar filtros
+            if (catalogState.filters.brands.length > 0) {
+                filtered = filtered.filter(item => catalogState.filters.brands.includes(item.brand));
+            }
+
+            if (catalogState.filters.fuels.length > 0) {
+                filtered = filtered.filter(item => catalogState.filters.fuels.includes(item.fuel));
+            }
+
+            if (catalogState.filters.minPrice) {
+                filtered = filtered.filter(item => item.price >= parseInt(catalogState.filters.minPrice));
+            }
+
+            if (catalogState.filters.maxPrice) {
+                filtered = filtered.filter(item => item.price <= parseInt(catalogState.filters.maxPrice));
+            }
+
+            if (catalogState.filters.minYear) {
+                filtered = filtered.filter(item => item.year >= parseInt(catalogState.filters.minYear));
+            }
+
+            if (catalogState.filters.maxYear) {
+                filtered = filtered.filter(item => item.year <= parseInt(catalogState.filters.maxYear));
+            }
+
+            if (catalogState.filters.minKm) {
+                filtered = filtered.filter(item => item.kilometers >= parseInt(catalogState.filters.minKm));
+            }
+
+            if (catalogState.filters.maxKm) {
+                filtered = filtered.filter(item => item.kilometers <= parseInt(catalogState.filters.maxKm));
+            }
+
+            // Aplicar ordenação
+            filtered = sortListings(filtered, catalogState.sortBy);
+
+            // Atualizar UI
+            updateCatalogListings(filtered);
+            updateCatalogView();
+        }
+
+        function sortListings(listings, sortBy) {
+            const sorted = [...listings];
+            
+            switch(sortBy) {
+                case 'price_asc':
+                    return sorted.sort((a, b) => a.price - b.price);
+                case 'price_desc':
+                    return sorted.sort((a, b) => b.price - a.price);
+                case 'year_desc':
+                    return sorted.sort((a, b) => b.year - a.year);
+                case 'year_asc':
+                    return sorted.sort((a, b) => a.year - b.year);
+                case 'km_asc':
+                    return sorted.sort((a, b) => a.kilometers - b.kilometers);
+                case 'km_desc':
+                    return sorted.sort((a, b) => b.kilometers - a.kilometers);
+                case 'recent':
+                default:
+                    return sorted.sort((a, b) => b.id - a.id); // IDs mais recentes primeiro
+            }
+        }
+
+        function updateCatalogListings(listings) {
+            const container = document.getElementById('catalog-listings-container');
+            const countElement = document.getElementById('catalog-results-count');
+            
+            if (!container) return;
+
+            // Atualizar contador
+            if (countElement) {
+                countElement.textContent = `${listings.length} veículo(s) encontrado(s)`;
+            }
+
+            if (listings.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results" style="grid-column: 1 / -1;">
+                        <h3>Nenhum veículo encontrado</h3>
+                        <p>Tente ajustar os filtros da sua pesquisa.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Gerar HTML dos anúncios
+            container.innerHTML = listings.map(listing => `
+                <div class="listing-card ${catalogState.view === 'list' ? 'list-layout' : ''}">
+                    <div class="listing-image" style="background-image: url('${listing.image}')">
+                        <div class="image-placeholder" style="display: none;">Imagem não disponível</div>
+                    </div>
+                    <div class="listing-details">
+                        <h3 class="listing-title">${listing.title}</h3>
+                        <div class="listing-price">${formatPrice(listing.price)}</div>
+                        <div class="listing-info">
+                            <span>${listing.year}</span>
+                            <span>${formatKilometers(listing.kilometers)}</span>
+                            <span>${listing.fuel}</span>
+                        </div>
+                        <p class="listing-description">${listing.description}</p>
+                        <a href="#" class="view-listing" data-id="${listing.id}">Ver detalhes</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateCatalogView() {
+            const container = document.getElementById('catalog-listings-container');
+            if (!container) return;
+
+            // Atualizar classes CSS para a vista selecionada
+            container.className = 'listings-grid';
+            if (catalogState.view === 'list') {
+                container.classList.add('list');
+            } else {
+                container.classList.add('compact');
+            }
+
+            // Atualizar cards individuais
+            container.querySelectorAll('.listing-card').forEach(card => {
+                if (catalogState.view === 'list') {
+                    card.classList.add('list-layout');
+                } else {
+                    card.classList.remove('list-layout');
+                }
+            });
+        }
+
+        function resetCatalogFilters() {
+            // Limpar checkboxes
+            document.querySelectorAll('#brand-filters input, #fuel-filters input').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+
+            // Limpar inputs de range
+            document.getElementById('min-price').value = '';
+            document.getElementById('max-price').value = '';
+            document.getElementById('min-year').value = '';
+            document.getElementById('max-year').value = '';
+            document.getElementById('min-km').value = '';
+            document.getElementById('max-km').value = '';
+
+            // Resetar ordenação
+            document.getElementById('sort-by').value = 'recent';
+            catalogState.sortBy = 'recent';
+
+            // Aplicar reset
+            applyCatalogFilters();
+        }
+
+        // Reutilizar funções de formatação do script principal
+        function formatPrice(price) {
+            return new Intl.NumberFormat('pt-PT', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 0
+            }).format(price);
+        }
+
+        function formatKilometers(km) {
+            return new Intl.NumberFormat('pt-PT').format(km) + ' km';
+        }
+    </script>
+</body>
+</html>

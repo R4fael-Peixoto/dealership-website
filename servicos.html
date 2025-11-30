@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - Carchoise</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="imagens/logo.png">
+    <style>
+        /* Estilos específicos para a página de serviços */
+        .services-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('imagens/banner.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .services-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .services-content {
+            padding: 4rem 0;
+        }
+
+        .services-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ffcc00, #1a3a5f);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 1rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffcc00, #ffdb4d);
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.3);
+        }
+
+        .service-card h3 {
+            color: #1a3a5f;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .service-features h4 {
+            color: #1a3a5f;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        .service-cta {
+            background: linear-gradient(135deg, #1a3a5f, #0f2a46);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .service-cta h3 {
+            color: #ffcc00;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .service-cta p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .services-hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .services-hero p {
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-hero {
+                padding: 3rem 0;
+            }
+
+            .services-hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .services-content {
+                padding: 3rem 0;
+            }
+
+            .service-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .service-icon {
+                font-size: 3rem;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Carchoise</h1>
+                    <p class="tagline">O seu stand automóvel de confiança</p>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="catalogo.html">Catálogo</a></li>
+                        <li><a href="servicos.html" class="active">Serviços</a></li>
+                        <li><a href="contactos.html">Contactos</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Banner de Serviços -->
+        <section class="services-hero">
+            <div class="container">
+                <h2>Nossos Serviços</h2>
+                <p>Descubra todos os serviços que oferecemos para a sua melhor experiência automóvel</p>
+            </div>
+        </section>
+
+        <!-- Conteúdo de Serviços -->
+        <section class="services-content">
+            <div class="container">
+                <div class="services-intro">
+                    <p>Na Carchoise, oferecemos uma gama completa de serviços para garantir que encontra o veículo perfeito e tenha toda a assistência necessária. A sua satisfação é a nossa prioridade.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Serviço 1 -->
+                    <div class="service-card">
+                        <div class="service-icon">🚗</div>
+                        <h3>Venda de Viaturas</h3>
+                        <p>Ampla seleção de carros e motas usados com garantia e qualidade assegurada.</p>
+                        <div class="service-features">
+                            <h4>O que incluímos:</h4>
+                            <ul class="feature-list">
+                                <li>Garantia de 12 meses</li>
+                                <li>Documentação completa</li>
+                                <li>Inspeção pré-compra</li>
+                                <li>Histórico do veículo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Serviço 2 -->
+                    <div class="service-card">
+                        <div class="service-icon">🔄</div>
+                        <h3>Test Drives</h3>
+                        <p>Experimente o veículo antes de decidir, com acompanhamento especializado.</p>
+                        <div class="service-features">
+                            <h4>Vantagens:</h4>
+                            <ul class="feature-list">
+                                <li>Agendamento flexível</li>
+                                <li>Percurso personalizado</li>
+                                <li>Aconselhamento técnico</li>
+                                <li>Sem compromisso</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Serviço 3 -->
+                    <div class="service-card">
+                        <div class="service-icon">💼</div>
+                        <h3>Avaliações</h3>
+                        <p>Avaliamos o seu veículo actual para troca com transparência e justiça.</p>
+                        <div class="service-features">
+                            <h4>Processo:</h4>
+                            <ul class="feature-list">
+                                <li>Avaliação gratuita</li>
+                                <li>Análise detalhada</li>
+                                <li>Proposta competitiva</li>
+                                <li>Processo rápido</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Serviço 4 -->
+                    <div class="service-card">
+                        <div class="service-icon">💰</div>
+                        <h3>Financiamento</h3>
+                        <p>Condições especiais de financiamento com as melhores taxas do mercado.</p>
+                        <div class="service-features">
+                            <h4>Benefícios:</h4>
+                            <ul class="feature-list">
+                                <li>Taxas competitivas</li>
+                                <li>Análise creditícia rápida</li>
+                                <li>Prazos flexíveis</li>
+                                <li>Entrada reduzida</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Serviço 5 -->
+                    <div class="service-card">
+                        <div class="service-icon">🛡️</div>
+                        <h3>Pós-Venda</h3>
+                        <p>Acompanhamento completo após a compra para sua total tranquilidade.</p>
+                        <div class="service-features">
+                            <h4>Serviços incluídos:</h4>
+                            <ul class="feature-list">
+                                <li>Assistência técnica</li>
+                                <li>Manutenção programada</li>
+                                <li>Peças e acessórios</li>
+                                <li>Suporte 24/7</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Serviço 6 -->
+                    <div class="service-card">
+                        <div class="service-icon">📋</div>
+                        <h3>Documentação</h3>
+                        <p>Tratamos de toda a burocracia para que possa disfrutar do seu veículo.</p>
+                        <div class="service-features">
+                            <h4>Inclui:</h4>
+                            <ul class="feature-list">
+                                <li>Transferência de propriedade</li>
+                                <li>Legalização do veículo</li>
+                                <li>Seguros</li>
+                                <li>Impostos e taxas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="service-cta">
+                    <h3>Pronto para Usufruir dos Nossos Serviços?</h3>
+                    <p>Contacte-nos hoje mesmo e descubra como podemos ajudá-lo a encontrar o veículo perfeito com todo o apoio necessário.</p>
+                    <div class="cta-buttons">
+                        <a href="contactos.html" class="contact-btn">📞 Ligar Agora</a>
+                        <a href="contactos.html" class="contact-btn secondary">📧 Enviar Email</a>
+                        <a href="catalogo.html" class="contact-btn">🚗 Ver Catálogo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Carchoise LDA</h3>
+                    <p>O seu stand automóvel de confiança desde 2024</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contactos</h3>
+                    <p>+351 939 058 907</p>
+                    <p>carchoise.lda@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Localização</h3>
+                    <p>Rua Alves de Sá 84</p>
+                    <p>Algueirão-Mem Martins</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Carchoise LDA - Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
